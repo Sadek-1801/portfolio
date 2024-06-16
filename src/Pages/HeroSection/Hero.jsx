@@ -2,6 +2,7 @@ import { Fade } from 'react-awesome-reveal'
 import Button from '../../Components/Button'
 import { useEffect, useState } from 'react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import Skills from './Skills';
 
 const Hero = () => {
   const textArr = ["Frontend Developer", "React & JavaScript", "Web Developer "]
@@ -33,14 +34,15 @@ const Hero = () => {
         </div>
         <div className='text-[18px] text-[#8892b0] w-full md:w-[600px] mb-[50px] font-sans font-normal'>I&apos;m an aspiring MERN Stack Developer passionate about crafting innovative and efficient web solutions. Dedicated to problem-solving and critical thinking that drives me to deliver clean code, responsive, and user-friendly software and applications. As I continue to learn and grow in this field, I aim to add value through creativity, attention to detail, and a commitment to continuous improvement. </div>
         <div className="flex gap-4">
-        <a href="https://drive.google.com/file/d/1_7shCLHhZpRkAcW0U5e8_LGJWKQz8xQc/view?usp=drive_link" target='_blank'>
-          <Button title='Resume' /></a>
-          <a href="https://github.com/your-github-username" target='_blank' rel='noopener noreferrer' className='flex items-center border-[1px] border-solid border-fontColor font-mono py-2 px-2 rounded hover:translate-x-[-4px] hover:translate-y-[-4px] hover:duration-300 hover:shadow-[3px_3px_0px_0px_rgba(100,255,218)]'><FaGithub className='h-5 mr-1'></FaGithub> Git
+          <a href="https://drive.google.com/file/d/1_7shCLHhZpRkAcW0U5e8_LGJWKQz8xQc/view?usp=drive_link" target='_blank'>
+            <Button title='Resume' /></a>
+          <a href="https://github.com/your-github-username" target='_blank' rel='noopener noreferrer' className='flex items-center border-[1px] border-solid border-fontColor font-mono py-2 px-2 rounded hover:translate-x-[-4px] hover:translate-y-[-4px] hover:duration-300 hover:shadow-[3px_3px_0px_0px_rgba(100,255,218)]'><FaGithub className='h-5 mr-1'></FaGithub> Github
           </a>
           <a href="https://www.linkedin.com/in/your-linkedin-username" target='_blank' rel='noopener noreferrer' className='flex items-center border-[1px] border-solid border-fontColor font-mono py-2 px-2 rounded hover:translate-x-[-4px] hover:translate-y-[-4px] hover:duration-300 hover:shadow-[3px_3px_0px_0px_rgba(100,255,218)]'><FaLinkedin className='h-5 mr-1'></FaLinkedin> LinkedIn
-          
+
           </a>
         </div>
+        <Skills />
       </div>
     </div>
   )

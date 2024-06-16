@@ -1,0 +1,18 @@
+.skills-slider .slick-slide {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.skill-item {
+  transition: transform 0.3s;
+}
+
+.skill-item:hover {
+  transform: translateX(-4px) translateY(-4px);
+}
+
+.skills-slider .slick-track {
+  display: flex;
+  align-items: center;
+}

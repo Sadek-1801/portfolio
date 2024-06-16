@@ -8,7 +8,7 @@ import { SiAxios, SiExpress, SiFirebase, SiHeadlessui, SiMongodb, SiReactquery, 
 const Built = () => {
 
   return (
-    <div className='w-full bg-background flex flex-col items-center justify-center pt-20 pb-20'>
+    <div id='project' className='w-full bg-background flex flex-col items-center justify-center pt-20 pb-20'>
       <div className='w-11/12 lg:w-4/5 flex flex-col items-center'>
         <div className='w-full flex justify-start items-center py-5 mb-5'>
           <Title no='02' name='Some Things I’ve Built' />
