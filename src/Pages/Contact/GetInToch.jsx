@@ -30,7 +30,7 @@ const GetInTouch = () => {
               type='email'
               id='email'
               name='email'
-              placeholder='@google.com'
+              placeholder='@gmail.com'
               required
             />
             <label className='text-[#ccd6f6] mb-2' htmlFor='message'>Message</label>

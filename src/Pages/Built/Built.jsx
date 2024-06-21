@@ -11,7 +11,7 @@ const Built = () => {
     <div id='project' className='w-full bg-background flex flex-col items-center justify-center pt-20 pb-20'>
       <div className='w-11/12 lg:w-4/5 flex flex-col items-center'>
         <div className='w-full flex justify-start items-center py-5 mb-5'>
-          <Title no='02' name='Some Things I’ve Built' />
+          <Title no='02' name='Featured Projects' />
         </div>
 
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 items-start mb-24'>
@@ -27,7 +27,7 @@ const Built = () => {
                 <RxExit className='cursor-pointer' />
                 <span className='absolute bottom-full left-1/2 transform -translate-x-1/2 -translate-y-2 p-1 bg-gray-800 text-white text-xs rounded hidden group-hover:block'>Live Site</span></a>
                 
-                <a href="https://github.com/Sadek-1801" target="_blank" rel="noopener noreferrer" className='group relative hover:duration-300'>
+                <a href="https://github.com/Sadek-1801/Fitfinesse-client" target="_blank" rel="noopener noreferrer" className='group relative hover:duration-300'>
                 <FiGithub className='cursor-pointer' />
                 <span className='absolute bottom-full left-1/2 transform -translate-x-1/2 -translate-y-2 p-1 bg-gray-800 text-white text-xs rounded hidden group-hover:block'>Github</span></a>
               </div>
