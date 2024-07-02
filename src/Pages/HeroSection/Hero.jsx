@@ -19,7 +19,7 @@ const Hero = () => {
     <div className='w-full bg-background flex items-center justify-center'>
       <div className='w-[80%] flex flex-col justify-center items-start text-primary py-[100px] ' >
         <div className='font-medium text-[18px] font-mono mb-[0px]'>Hi, my name is</div>
-        <div className='flex flex-col justify-center items-start text-4xl md:text-7xl mb-[30px] font-bold font-sans'>
+        <div className='flex flex-col justify-center items-start text-3xl md:text-7xl mb-[30px] font-bold font-sans'>
 
           <div className=' text-[#ccd6f6] mb-0 uppercase'>
             <Fade cascade delay={500} damping={0.1}>m. ashrafujjaman.</Fade>
