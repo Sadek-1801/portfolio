@@ -1,0 +1,90 @@
+profile:
+  name: "M. Ashrafujjaman"
+  short_name: "Sadek"
+  title: "Software Engineer I"
+  tagline: "Frontend engineer — Ember.js, React & TypeScript — growing full-stack with Ruby on Rails."
+  bio: >
+    I'm a frontend developer in Dhaka with a year of professional experience
+    shipping production web applications. At Corpovisuals I've built and
+    shipped 12+ Ember.js applications against Rails/JSON:API backends,
+    including a site serving 350k+ visitors a month. Part-time at OniKanji
+    (US-based SaaS) I build React + TypeScript features for a kanji-learning
+    platform. I care about pixel-perfect, responsive UI backed by tests —
+    and I'm deliberately expanding into backend work with Rails and
+    PostgreSQL. This site is part of that: it's a Rails 8 app I designed and
+    built myself.
+  location: "Dhaka, Bangladesh"
+  email: "hmashrafujjaman@gmail.com"
+  whatsapp: "+880 1533 63 25 62"
+  whatsapp_url: "https://wa.me/8801533632562"
+  github: "https://github.com/Sadek-1801"
+  github_handle: "Sadek-1801"
+  linkedin: "http://www.linkedin.com/in/moh-ashrafujjaman"
+  resume_path: "/resume.pdf"
+
+experience:
+  - company: "Corpovisuals"
+    url: "https://corpovisuals.com/"
+    role: "Software Engineer I"
+    period: "Jan 2025 — present"
+    bullets:
+      - "Built and shipped 12+ Ember.js front-end applications integrated with JSON:API Rails backends, including a website with 350k+ visitors per month."
+      - "Implemented modular, reusable components and UI patterns for pixel-perfect layouts across 4K, 2K, FHD, tablet and mobile screens."
+      - "Wrote unit and acceptance tests with Ember QUnit to keep dashboards stable; reduced visual regressions through careful QA."
+      - "Worked in Git feature-branch/PR workflows with code review."
+    tech: ["Ember.js", "JavaScript", "SCSS", "Bootstrap", "QUnit"]
+  - company: "OniKanji LLC"
+    url: "https://onikanji.com/"
+    role: "Software Engineer (part-time)"
+    period: "2025 — present"
+    bullets:
+      - "Built a production Sentence Assembly Quiz component in React + TypeScript + Tailwind: drag-and-drop UI, dynamic state, conditional validation and real-time feedback."
+      - "Implemented kanji search handling, bug fixes and UI improvements across the app."
+      - "Wrote AI-integrated Python audit scripts for reading and auditing CSV data."
+      - "Collaborated remotely with a US-based engineering team via GitHub and Discord."
+    tech: ["React", "TypeScript", "Tailwind CSS", "Python", "REST APIs"]
+
+projects:
+  - name: "Quran Web App"
+    description: "A web application for reading and exploring the Qur'an, built on a structured JSON dataset of the full text."
+    tech: ["JavaScript", "Next.js", "JSON data pipeline"]
+    repo_url: "https://github.com/Sadek-1801/quran-web-app"
+    label: "Open source"
+  - name: "WebP Converter"
+    description: "A command-line tool that batch-converts images to WebP, built to speed up asset optimization for client sites."
+    tech: ["Python", "CLI", "Image processing"]
+    repo_url: "https://github.com/Sadek-1801/webp-converter"
+    label: "Open source"
+  - name: "This portfolio"
+    description: "The site you're reading — a Rails 8 app with YAML-driven content, no database, hand-written CSS, deployed on Render."
+    tech: ["Ruby on Rails 8", "Propshaft", "CSS"]
+    repo_url: "https://github.com/Sadek-1801/portfolio"
+    label: "Open source"
+  - name: "Cholo Bangladesh"
+    description: "Frontend for a Bangladesh travel platform — one of 12+ production Ember.js apps delivered at Corpovisuals."
+    tech: ["Ember.js", "SCSS", "JSON:API"]
+    label: "Client work"
+  - name: "MEMOs"
+    description: "Web application frontend for MEMOs, built and maintained as part of the Corpovisuals engineering team."
+    tech: ["Ember.js", "JavaScript", "Bootstrap"]
+    label: "Client work"
+  - name: "Open Academy London"
+    description: "Frontend for an education platform, with responsive layouts across desktop, tablet and mobile."
+    tech: ["Ember.js", "SCSS", "Responsive design"]
+    label: "Client work"
+
+skills:
+  - group: "Frontend"
+    items: ["JavaScript (ES6+)", "TypeScript", "Ember.js", "React", "HTML5", "CSS3 / SCSS", "Tailwind CSS"]
+  - group: "Backend"
+    items: ["Ruby on Rails (learning in production)", "Node.js", "Express", "MongoDB", "PostgreSQL (learning)", "REST / JSON:API"]
+  - group: "Testing & QA"
+    items: ["Ember QUnit", "Acceptance testing", "Minitest", "Manual QA"]
+  - group: "Tools"
+    items: ["Git / GitHub / GitLab", "Linux & terminal", "AI-assisted workflows", "Figma (basic)", "npm / pnpm"]
+
+education:
+  - degree: "BA (Hons) in English"
+    institution: "Bangladesh Islami University"
+    year: "2024"
+    detail: "Major: English Literature — CGPA 3.36"
