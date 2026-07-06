@@ -197,8 +197,6 @@ a:focus-visible, .btn:focus-visible {
 .project-card.featured { grid-column: 1 / -1; border-top: 3px solid var(--red); }
 .project-card.featured h3 { font-size: 1.25rem; }
 .project-card.featured > p { max-width: 38rem; }
-.project-card:last-child { grid-column: 1 / -1; }
-.project-card:last-child > p { max-width: 38rem; }
 .project-head { display: flex; justify-content: space-between; align-items: start; gap: 0.5rem; }
 .project-card h3 { font-size: 1.08rem; font-weight: 700; }
 .project-card > p { font-size: 0.92rem; color: var(--muted); flex: 1; }

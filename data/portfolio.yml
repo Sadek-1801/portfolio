@@ -10,8 +10,8 @@ profile:
     storefront, admin, customer care and outlet operations.
     I've also built production-grade Rails 8 applications for clients,
     working across the stack from PostgreSQL schemas to Hotwire frontends.
-    Part-time at OniKanji, a US-based SaaS, I build React + TypeScript
-    features for a kanji-learning platform. What I care about: interfaces
+    For OniKanji, a US-based kanji-learning SaaS, I've built React +
+    TypeScript features across the platform. What I care about: interfaces
     that are pixel-perfect on every screen size, backed by tests, shipped on
     schedule. Outside client work I build tools that scratch my own itch,
     most recently a RAG-powered trading journal in Python.
@@ -36,17 +36,6 @@ experience:
       - "Implemented role-based UI permissions, form validation layers and reusable component systems for pixel-perfect layouts across 4K, 2K, FHD, tablet and mobile screens."
       - "Kept apps stable with QUnit unit and acceptance tests tracked by code coverage; worked in Git feature-branch/PR workflows with code review."
     tech: ["Ember.js", "JavaScript", "Ruby on Rails", "Hotwire", "PostgreSQL", "SCSS", "Bootstrap", "QUnit"]
-  - company: "OniKanji LLC"
-    url: "https://onikanji.com/"
-    role: "Software Engineer (part-time)"
-    period: "2025 – present"
-    bullets:
-      - "Built a production Sentence Assembly Quiz component in React + TypeScript + Tailwind: drag-and-drop UI, dynamic state, conditional validation and real-time feedback."
-      - "Implemented kanji search handling, bug fixes and UI improvements across the app."
-      - "Wrote AI-integrated Python audit scripts for reading and auditing CSV data."
-      - "Collaborated remotely with a US-based engineering team via GitHub and Discord."
-    tech: ["React", "TypeScript", "Tailwind CSS", "Python", "REST APIs"]
-
 projects:
   - name: "Shordindu retail suite"
     description: "Four coordinated Ember.js apps sharing a component library: customer storefront, admin dashboard, customer-care and outlet apps with role-based access control."
@@ -72,6 +61,11 @@ projects:
     tech: ["Ember.js", "Google Maps API", "JSON:API"]
     live_url: "https://interport.group/"
     label: "Client work"
+  - name: "OniKanji"
+    description: "Kanji-learning SaaS for a US client: a drag-and-drop Sentence Assembly Quiz with conditional validation and real-time feedback, kanji search handling and AI-integrated Python data audits."
+    tech: ["React", "TypeScript", "Tailwind CSS", "Python"]
+    live_url: "https://onikanji.com/"
+    label: "Client work"
   - name: "Trading Helper"
     description: "Python CLI that ingests trading books into a vector store and answers pre-trade questions with cited passages; includes tilt detection and an SQLite trade journal."
     tech: ["Python", "RAG", "ChromaDB", "LLM APIs", "SQLite"]
@@ -79,10 +73,10 @@ projects:
 
 skills:
   - group: "Frontend"
-    items: ["JavaScript (ES6+)", "TypeScript", "Ember.js", "React", "HTML5", "CSS3 / SCSS", "Tailwind CSS"]
+    items: ["JavaScript (ES6+)", "TypeScript", "Ember.js", "React", "SCSS / PostCSS", "Tailwind / Bootstrap"]
   - group: "Backend"
-    items: ["Ruby on Rails", "Hotwire (Turbo / Stimulus)", "Python", "PostgreSQL", "SQLite", "Node.js", "Express", "REST / JSON:API"]
+    items: ["Ruby on Rails", "Hotwire (Turbo / Stimulus)", "Python", "PostgreSQL", "Node.js", "REST / JSON:API"]
   - group: "Testing & QA"
-    items: ["Ember QUnit", "Acceptance testing", "RSpec", "Minitest", "Manual QA"]
+    items: ["QUnit (unit & acceptance)", "RSpec", "Minitest"]
   - group: "Tools"
-    items: ["Git / GitHub / GitLab", "Linux & terminal", "LLM integration / RAG", "AI-assisted workflows", "Figma (basic)", "npm / pnpm"]
+    items: ["Git / GitHub / GitLab", "Linux & terminal", "LLM integration / RAG"]
