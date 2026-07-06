@@ -1,0 +1,89 @@
+<% profile = @portfolio[:profile] %>
+
+<header class="hero" id="top">
+  <p class="hero-kicker"><%= profile[:location] %></p>
+  <h1 class="hero-name"><%= profile[:name] %></h1>
+  <p class="hero-title"><%= profile[:title] %></p>
+  <p class="hero-tagline"><%= profile[:tagline] %></p>
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="#projects">View projects</a>
+    <a class="btn" href="<%= profile[:resume_path] %>" download>Download CV</a>
+  </div>
+</header>
+
+<section id="about" class="section">
+  <p class="route" aria-hidden="true">GET /about</p>
+  <h2>About</h2>
+  <p class="about-bio"><%= profile[:bio] %></p>
+</section>
+
+<section id="projects" class="section">
+  <p class="route" aria-hidden="true">GET /projects</p>
+  <h2>Projects</h2>
+  <div class="project-grid">
+    <% @portfolio[:projects].each do |project| %>
+      <article class="project-card">
+        <div class="project-head">
+          <h3><%= project[:name] %></h3>
+          <span class="label label-<%= project[:label].parameterize %>"><%= project[:label] %></span>
+        </div>
+        <p><%= project[:description] %></p>
+        <ul class="chip-list">
+          <% project[:tech].each do |t| %><li class="chip"><%= t %></li><% end %>
+        </ul>
+        <div class="project-links">
+          <% if project[:repo_url] %><a href="<%= project[:repo_url] %>" target="_blank" rel="noopener">Source ↗</a><% end %>
+          <% if project[:live_url] %><a href="<%= project[:live_url] %>" target="_blank" rel="noopener">Live ↗</a><% end %>
+        </div>
+      </article>
+    <% end %>
+  </div>
+</section>
+
+<section id="experience" class="section">
+  <p class="route" aria-hidden="true">GET /experience</p>
+  <h2>Experience</h2>
+  <% @portfolio[:experience].each do |job| %>
+    <article class="job">
+      <div class="job-head">
+        <h3><%= job[:role] %> · <a href="<%= job[:url] %>" target="_blank" rel="noopener"><%= job[:company] %></a></h3>
+        <p class="job-period"><%= job[:period] %></p>
+      </div>
+      <ul class="job-bullets">
+        <% job[:bullets].each do |b| %><li><%= b %></li><% end %>
+      </ul>
+      <ul class="chip-list">
+        <% job[:tech].each do |t| %><li class="chip"><%= t %></li><% end %>
+      </ul>
+    </article>
+  <% end %>
+  <% @portfolio[:education].each do |edu| %>
+    <p class="education"><strong><%= edu[:degree] %></strong> — <%= edu[:institution] %> (<%= edu[:year] %>). <%= edu[:detail] %></p>
+  <% end %>
+</section>
+
+<section id="skills" class="section">
+  <p class="route" aria-hidden="true">GET /skills</p>
+  <h2>Skills</h2>
+  <% @portfolio[:skills].each do |group| %>
+    <div class="skill-group">
+      <h3><%= group[:group] %></h3>
+      <ul class="chip-list">
+        <% group[:items].each do |item| %><li class="chip"><%= item %></li><% end %>
+      </ul>
+    </div>
+  <% end %>
+</section>
+
+<footer id="contact" class="section footer">
+  <p class="route" aria-hidden="true">POST /contact</p>
+  <h2>Contact</h2>
+  <p>Open to full-time roles — frontend or full-stack.</p>
+  <ul class="contact-list">
+    <li><a href="mailto:<%= profile[:email] %>"><%= profile[:email] %></a></li>
+    <li><a href="<%= profile[:whatsapp_url] %>" target="_blank" rel="noopener">WhatsApp <%= profile[:whatsapp] %></a></li>
+    <li><a href="<%= profile[:github] %>" target="_blank" rel="noopener">github.com/<%= profile[:github_handle] %></a></li>
+    <li><a href="<%= profile[:linkedin] %>" target="_blank" rel="noopener">LinkedIn</a></li>
+    <li><a href="<%= profile[:resume_path] %>" download>Résumé (PDF)</a></li>
+  </ul>
+</footer>
