@@ -12,11 +12,13 @@
 </header>
 
 <section id="about" class="section">
+  <p class="route" aria-hidden="true">GET /about</p>
   <h2>About</h2>
   <p class="about-bio"><%= profile[:bio] %></p>
 </section>
 
 <section id="projects" class="section">
+  <p class="route" aria-hidden="true">GET /projects</p>
   <h2>Projects</h2>
   <div class="project-grid">
     <% @portfolio[:projects].each do |project| %>
@@ -39,6 +41,7 @@
 </section>
 
 <section id="experience" class="section">
+  <p class="route" aria-hidden="true">GET /experience</p>
   <h2>Experience</h2>
   <% @portfolio[:experience].each do |job| %>
     <article class="job">
@@ -60,6 +63,7 @@
 </section>
 
 <section id="skills" class="section">
+  <p class="route" aria-hidden="true">GET /skills</p>
   <h2>Skills</h2>
   <% @portfolio[:skills].each do |group| %>
     <div class="skill-group">
@@ -72,6 +76,7 @@
 </section>
 
 <footer id="contact" class="section footer">
+  <p class="route" aria-hidden="true">POST /contact</p>
   <h2>Contact</h2>
   <p>Open to full-time roles — frontend or full-stack.</p>
   <ul class="contact-list">

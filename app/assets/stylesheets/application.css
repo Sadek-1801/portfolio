@@ -1,10 +1,161 @@
-/*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
- */
+/* Palette: Bangladesh flag — bottle green field, red sun disc, green-tinted paper. */
+:root {
+  --bg: #f4f7f3;
+  --ink: #17281f;
+  --muted: #5d7268;
+  --green: #006a4e;
+  --green-soft: #0e8563;
+  --red: #f42a41;
+  --card: #ffffff;
+  --line: #dbe5dd;
+  --chip: #e7efe8;
+  --max: 46rem;
+  --display: "Bricolage Grotesque", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --body: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d1411;
+    --ink: #e4ece5;
+    --muted: #8fa397;
+    --green: #4fc48f;
+    --green-soft: #3aa578;
+    --red: #ff5a48;
+    --card: #141d18;
+    --line: #24312a;
+    --chip: #1b2620;
+  }
+}
+
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 16.5px/1.65 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--red); color: #fff; }
+h1, h2, h3, .nav-name, .btn { font-family: var(--display); }
+.route, .chip, .label, .nav-links, .job-period, .hero-kicker { font-family: var(--mono); }
+a { color: var(--green); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:focus-visible, .btn:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---- nav ---- */
+.site-nav {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+  max-width: var(--max); margin: 0 auto; padding: 1rem 1.25rem;
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  backdrop-filter: blur(8px);
+}
+.nav-name { font-weight: 800; font-size: 1.2rem; text-decoration: none; color: var(--ink); }
+.nav-dot { color: var(--red); }
+.nav-links { display: flex; gap: .9rem; font-size: .82rem; flex-wrap: wrap; }
+.nav-links a { text-decoration: none; color: var(--muted); }
+.nav-links a:hover { color: var(--green); }
+.nav-cv { border: 1px solid var(--green); border-radius: 999px; padding: .05rem .65rem; color: var(--green) !important; }
+.nav-cv:hover { background: var(--green); color: var(--bg) !important; }
+
+main { max-width: var(--max); margin: 0 auto; padding: 0 1.25rem 4rem; }
+
+/* ---- hero: name over the rising sun disc ---- */
+.hero { position: relative; padding: 6rem 0 4.5rem; }
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 2.2rem; left: -1.5rem;
+  width: 15rem; height: 15rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 35%,
+    color-mix(in srgb, var(--red) 26%, transparent),
+    color-mix(in srgb, var(--red) 10%, transparent) 62%,
+    transparent 72%);
+  z-index: 0;
+  pointer-events: none;
+}
+.hero > * { position: relative; z-index: 1; }
+.hero-kicker { color: var(--muted); font-size: .8rem; letter-spacing: .05em; }
+.hero-name {
+  font-size: clamp(2.6rem, 8vw, 4.3rem);
+  font-weight: 800; line-height: 1.02; letter-spacing: -.025em;
+  margin: .5rem 0 .35rem;
+}
+.hero-title { font-family: var(--display); font-size: 1.3rem; font-weight: 700; color: var(--green); }
+.hero-tagline { margin-top: .8rem; color: var(--muted); max-width: 33rem; font-size: 1.05rem; }
+.hero-actions { display: flex; gap: .75rem; margin-top: 2rem; flex-wrap: wrap; }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-kicker, .hero-name, .hero-title, .hero-tagline, .hero-actions {
+    animation: rise .55s cubic-bezier(.2,.7,.3,1) both;
+  }
+  .hero-name { animation-delay: .06s; }
+  .hero-title { animation-delay: .12s; }
+  .hero-tagline { animation-delay: .18s; }
+  .hero-actions { animation-delay: .26s; }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
+.btn {
+  display: inline-block; padding: .55rem 1.25rem; border-radius: 999px;
+  border: 1.5px solid var(--green); color: var(--green);
+  text-decoration: none; font-weight: 700; font-size: .95rem;
+  transition: transform .15s ease, background .15s ease, color .15s ease;
+}
+.btn-primary { background: var(--green); color: var(--bg); }
+.btn:hover { transform: translateY(-2px); }
+.btn:not(.btn-primary):hover { background: var(--green); color: var(--bg); }
+
+/* ---- sections ---- */
+.section { padding: 3.25rem 0; border-top: 1px solid var(--line); }
+.route { color: var(--green-soft); font-size: .78rem; letter-spacing: .03em; }
+.section h2 {
+  font-size: 1.7rem; font-weight: 800; letter-spacing: -.015em;
+  margin: .15rem 0 1.4rem;
+}
+.about-bio { font-size: 1.06rem; max-width: 40rem; }
+
+/* projects */
+.project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 1rem; }
+.project-card {
+  background: var(--card); border: 1px solid var(--line); border-radius: .9rem;
+  padding: 1.15rem; display: flex; flex-direction: column; gap: .7rem;
+  transition: transform .15s ease, border-color .15s ease;
+}
+.project-card:hover { transform: translateY(-3px); border-color: var(--green-soft); }
+.project-head { display: flex; justify-content: space-between; align-items: start; gap: .5rem; }
+.project-card h3 { font-size: 1.08rem; font-weight: 700; }
+.project-card > p { font-size: .92rem; color: var(--muted); flex: 1; }
+.label {
+  font-size: .64rem; letter-spacing: .05em; text-transform: uppercase; white-space: nowrap;
+  padding: .18rem .55rem; border-radius: 999px; border: 1px solid var(--line); color: var(--muted);
+}
+.label-open-source { border-color: var(--green-soft); color: var(--green-soft); }
+.project-links { display: flex; gap: 1rem; font-size: .88rem; }
+
+.chip-list { display: flex; flex-wrap: wrap; gap: .4rem; list-style: none; padding: 0; }
+.chip { background: var(--chip); border-radius: 999px; padding: .14rem .6rem; font-size: .74rem; color: var(--muted); }
+
+/* experience */
+.job { margin-bottom: 2.25rem; padding-left: 1.1rem; border-left: 2px solid var(--line); }
+.job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+.job h3 { font-size: 1.12rem; font-weight: 700; }
+.job-period { color: var(--muted); font-size: .8rem; }
+.job-bullets { margin: .6rem 0 .8rem 1.1rem; display: grid; gap: .35rem; font-size: .95rem; }
+.job-bullets li::marker { color: var(--red); }
+.education { color: var(--muted); font-size: .95rem; }
+
+/* skills */
+.skill-group { margin-bottom: 1.3rem; }
+.skill-group h3 { font-size: .98rem; font-weight: 700; margin-bottom: .5rem; }
+
+/* contact */
+.footer > p { color: var(--muted); margin-bottom: 1.1rem; }
+.contact-list { list-style: none; padding: 0; display: grid; gap: .5rem; font-size: 1rem; }

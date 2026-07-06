@@ -1,29 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title><%= content_for(:title) || "Portfolio" %></title>
+    <% profile = PortfolioContent.data[:profile] %>
+    <title><%= profile[:name] %> — <%= profile[:title] %></title>
+    <meta name="description" content="<%= profile[:tagline] %>">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Portfolio">
-    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="color-scheme" content="light dark">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= yield :head %>
-
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
-    <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app %>
-    <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="site-nav">
+      <a class="nav-name" href="#top"><%= profile[:short_name] %><span class="nav-dot">.</span></a>
+      <div class="nav-links">
+        <a href="#projects">/projects</a>
+        <a href="#experience">/experience</a>
+        <a href="#skills">/skills</a>
+        <a href="#contact">/contact</a>
+        <a class="nav-cv" href="<%= profile[:resume_path] %>" download>cv.pdf</a>
+      </div>
+    </nav>
+    <main><%= yield %></main>
   </body>
 </html>
