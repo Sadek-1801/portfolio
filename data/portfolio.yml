@@ -20,7 +20,7 @@ profile:
   github: "https://github.com/Sadek-1801"
   github_handle: "Sadek-1801"
   linkedin: "http://www.linkedin.com/in/moh-ashrafujjaman"
-  resume_path: "/resume.pdf"
+  resume_path: "resume.pdf"
 
 experience:
   - company: "Corpovisuals"
@@ -56,9 +56,10 @@ projects:
     repo_url: "https://github.com/Sadek-1801/webp-converter"
     label: "Open source"
   - name: "This portfolio"
-    description: "The site you're reading — a Rails 8 app with YAML-driven content, no database, hand-written CSS, deployed on Render."
+    description: "The site you're reading — a Rails 8 app with YAML-driven content, no database, hand-written CSS, rendered to static HTML by GitHub Actions."
     tech: ["Ruby on Rails 8", "Propshaft", "CSS"]
     repo_url: "https://github.com/Sadek-1801/portfolio"
+    live_url: "https://sadek-1801.github.io/portfolio/"
     label: "Open source"
   - name: "Cholo Bangladesh"
     description: "Frontend for a Bangladesh travel platform — one of 12+ production Ember.js apps delivered at Corpovisuals."
