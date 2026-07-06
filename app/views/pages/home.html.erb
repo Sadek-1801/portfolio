@@ -1,89 +1,163 @@
 <% profile = @portfolio[:profile] %>
 
 <header class="hero" id="top">
-  <p class="hero-kicker"><%= profile[:location] %></p>
-  <h1 class="hero-name"><%= profile[:name] %></h1>
-  <p class="hero-title"><%= profile[:title] %></p>
-  <p class="hero-tagline"><%= profile[:tagline] %></p>
-  <div class="hero-actions">
-    <a class="btn btn-primary" href="#projects">View projects</a>
-    <a class="btn" href="<%= profile[:resume_path] %>" download>Download CV</a>
+  <div class="wrap">
+    <p class="hero-kicker">~ <%= profile[:location] %> · UTC+6</p>
+    <h1 class="hero-name"><%= profile[:name] %></h1>
+    <p class="hero-title"><%= profile[:title] %></p>
+    <p class="hero-tagline"><%= profile[:tagline] %></p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#projects">View projects</a>
+      <a class="btn" href="<%= profile[:resume_path] %>" target="_blank" rel="noopener">View CV</a>
+    </div>
+    <p class="hero-links">
+      <a href="<%= profile[:github] %>" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      </a>
+      <a href="mailto:<%= profile[:email] %>" aria-label="Email" title="<%= profile[:email] %>">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/></svg>
+      </a>
+      <a href="<%= profile[:linkedin] %>" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.55V9h3.57v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.23 0Z"/></svg>
+      </a>
+    </p>
   </div>
 </header>
 
 <section id="about" class="section">
-  <p class="route" aria-hidden="true">GET /about</p>
-  <h2>About</h2>
-  <p class="about-bio"><%= profile[:bio] %></p>
+  <div class="wrap">
+    <p class="request-line" aria-hidden="true">
+      <span class="route">GET /about</span>
+      <span class="status"><span class="status-code">200 OK</span></span>
+    </p>
+    <h2>About</h2>
+    <p class="about-bio"><%= profile[:bio] %></p>
+  </div>
 </section>
 
 <section id="projects" class="section">
-  <p class="route" aria-hidden="true">GET /projects</p>
-  <h2>Projects</h2>
-  <div class="project-grid">
-    <% @portfolio[:projects].each do |project| %>
-      <article class="project-card">
-        <div class="project-head">
-          <h3><%= project[:name] %></h3>
-          <span class="label label-<%= project[:label].parameterize %>"><%= project[:label] %></span>
+  <div class="wrap">
+    <p class="request-line" aria-hidden="true">
+      <span class="route">GET /projects</span>
+      <span class="status"><span class="status-code">200 OK</span> · <%= @portfolio[:projects].size %> rendered</span>
+    </p>
+    <h2>Projects</h2>
+    <div class="project-grid">
+      <% @portfolio[:projects].each_with_index do |project, i| %>
+        <article class="project-card<%= " featured" if i.zero? %>">
+          <div class="project-head">
+            <h3><%= project[:name] %></h3>
+            <span class="label label-<%= project[:label].parameterize %>"><%= project[:label] %></span>
+          </div>
+          <p><%= project[:description] %></p>
+          <ul class="chip-list">
+            <% project[:tech].each do |t| %><li class="chip"><%= t %></li><% end %>
+          </ul>
+          <% if project[:repo_url] || project[:live_url] %>
+            <div class="project-links">
+              <% if project[:repo_url] %><a href="<%= project[:repo_url] %>" target="_blank" rel="noopener">Source ↗</a><% end %>
+              <% if project[:live_url] %><a href="<%= project[:live_url] %>" target="_blank" rel="noopener">Live ↗</a><% end %>
+            </div>
+          <% end %>
+        </article>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="section">
+  <div class="wrap">
+    <p class="request-line" aria-hidden="true">
+      <span class="route">GET /experience</span>
+      <span class="status"><span class="status-code">200 OK</span> · <%= @portfolio[:experience].size %> roles</span>
+    </p>
+    <h2>Experience</h2>
+    <% @portfolio[:experience].each do |job| %>
+      <article class="job">
+        <div class="job-head">
+          <h3><%= job[:role] %> · <a href="<%= job[:url] %>" target="_blank" rel="noopener"><%= job[:company] %></a></h3>
+          <p class="job-period"><%= job[:period] %></p>
         </div>
-        <p><%= project[:description] %></p>
-        <ul class="chip-list">
-          <% project[:tech].each do |t| %><li class="chip"><%= t %></li><% end %>
+        <ul class="job-bullets">
+          <% job[:bullets].each do |b| %><li><%= b %></li><% end %>
         </ul>
-        <div class="project-links">
-          <% if project[:repo_url] %><a href="<%= project[:repo_url] %>" target="_blank" rel="noopener">Source ↗</a><% end %>
-          <% if project[:live_url] %><a href="<%= project[:live_url] %>" target="_blank" rel="noopener">Live ↗</a><% end %>
-        </div>
+        <ul class="chip-list">
+          <% job[:tech].each do |t| %><li class="chip"><%= t %></li><% end %>
+        </ul>
       </article>
     <% end %>
   </div>
 </section>
 
-<section id="experience" class="section">
-  <p class="route" aria-hidden="true">GET /experience</p>
-  <h2>Experience</h2>
-  <% @portfolio[:experience].each do |job| %>
-    <article class="job">
-      <div class="job-head">
-        <h3><%= job[:role] %> · <a href="<%= job[:url] %>" target="_blank" rel="noopener"><%= job[:company] %></a></h3>
-        <p class="job-period"><%= job[:period] %></p>
-      </div>
-      <ul class="job-bullets">
-        <% job[:bullets].each do |b| %><li><%= b %></li><% end %>
-      </ul>
-      <ul class="chip-list">
-        <% job[:tech].each do |t| %><li class="chip"><%= t %></li><% end %>
-      </ul>
-    </article>
-  <% end %>
-  <% @portfolio[:education].each do |edu| %>
-    <p class="education"><strong><%= edu[:degree] %></strong> — <%= edu[:institution] %> (<%= edu[:year] %>). <%= edu[:detail] %></p>
-  <% end %>
-</section>
-
 <section id="skills" class="section">
-  <p class="route" aria-hidden="true">GET /skills</p>
-  <h2>Skills</h2>
-  <% @portfolio[:skills].each do |group| %>
-    <div class="skill-group">
-      <h3><%= group[:group] %></h3>
-      <ul class="chip-list">
-        <% group[:items].each do |item| %><li class="chip"><%= item %></li><% end %>
-      </ul>
+  <div class="wrap">
+    <p class="request-line" aria-hidden="true">
+      <span class="route">GET /skills</span>
+      <span class="status"><span class="status-code">200 OK</span> · <%= @portfolio[:skills].sum { |g| g[:items].size } %> items</span>
+    </p>
+    <h2>Skills</h2>
+    <div class="skill-grid">
+      <% @portfolio[:skills].each do |group| %>
+        <div class="skill-group">
+          <h3 class="tree-dir" aria-label="<%= group[:group] %>"><%= group[:group].parameterize %>/</h3>
+          <ul class="skill-tree">
+            <% group[:items].each_with_index do |item, i| %>
+              <li>
+                <span class="tree-branch" aria-hidden="true"><%= i == group[:items].size - 1 ? "└──" : "├──" %></span>
+                <%= item %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </section>
 
 <footer id="contact" class="section footer">
-  <p class="route" aria-hidden="true">POST /contact</p>
-  <h2>Contact</h2>
-  <p>Open to full-time roles — frontend or full-stack.</p>
-  <ul class="contact-list">
-    <li><a href="mailto:<%= profile[:email] %>"><%= profile[:email] %></a></li>
-    <li><a href="<%= profile[:whatsapp_url] %>" target="_blank" rel="noopener">WhatsApp <%= profile[:whatsapp] %></a></li>
-    <li><a href="<%= profile[:github] %>" target="_blank" rel="noopener">github.com/<%= profile[:github_handle] %></a></li>
-    <li><a href="<%= profile[:linkedin] %>" target="_blank" rel="noopener">LinkedIn</a></li>
-    <li><a href="<%= profile[:resume_path] %>" download>Résumé (PDF)</a></li>
-  </ul>
+  <div class="wrap">
+    <p class="request-line" aria-hidden="true">
+      <span class="route">POST /contact</span>
+      <span class="status"><span class="status-code">202 Accepted</span> · replies within a day</span>
+    </p>
+    <h2>Contact</h2>
+    <p class="footer-lede">Open to full-time roles, frontend or full-stack.</p>
+    <ul class="contact-list">
+      <li><a href="mailto:<%= profile[:email] %>"><%= profile[:email] %></a></li>
+      <li><a href="<%= profile[:whatsapp_url] %>" target="_blank" rel="noopener">WhatsApp <%= profile[:whatsapp] %></a></li>
+      <li><a href="<%= profile[:github] %>" target="_blank" rel="noopener">github.com/<%= profile[:github_handle] %></a></li>
+      <li><a href="<%= profile[:linkedin] %>" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="<%= profile[:resume_path] %>" target="_blank" rel="noopener">Résumé (PDF)</a></li>
+    </ul>
+    <p class="site-meta">Rails 8 · rendered once, served static from GitHub Pages</p>
+  </div>
 </footer>
+
+<dialog id="contact-modal" class="contact-modal" aria-labelledby="contact-modal-title">
+  <button class="modal-close" aria-label="Close" autofocus>&times;</button>
+  <p class="route" aria-hidden="true">POST /connect</p>
+  <h3 id="contact-modal-title">Let's get in touch</h3>
+  <p class="modal-text"><%= profile[:contact_prompt] %></p>
+  <div class="modal-actions">
+    <a class="btn btn-primary" href="<%= profile[:linkedin] %>" target="_blank" rel="noopener">Connect on LinkedIn</a>
+    <a class="btn" href="mailto:<%= profile[:email] %>">Email me</a>
+  </div>
+</dialog>
+
+<script>
+  (() => {
+    const dialog = document.getElementById("contact-modal");
+    if (!dialog || !dialog.showModal) return;
+    let seen = false;
+    try { seen = sessionStorage.getItem("contactPromptShown"); } catch {}
+    if (seen) return;
+    setTimeout(() => {
+      try { sessionStorage.setItem("contactPromptShown", "1"); } catch {}
+      if (!dialog.open) dialog.showModal();
+    }, 9000);
+    dialog.addEventListener("click", (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+    dialog.querySelector(".modal-close").addEventListener("click", () => dialog.close());
+  })();
+</script>

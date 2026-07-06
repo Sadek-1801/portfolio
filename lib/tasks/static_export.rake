@@ -8,7 +8,7 @@ namespace :static do
     html = PagesController.render(:home, assigns: { portfolio: PortfolioContent.data })
     File.write(site.join("index.html"), html)
 
-    # Fingerprinted CSS from assets:precompile, plus resume.pdf, icon.svg, etc.
+    # Fingerprinted CSS from assets:precompile, plus icon.svg, etc.
     FileUtils.cp_r(Dir[Rails.root.join("public", "*")], site)
     File.write(site.join(".nojekyll"), "")
 

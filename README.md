@@ -13,10 +13,17 @@ in [`data/portfolio.yml`](data/portfolio.yml). Hand-written CSS via Propshaft.
 
     bin/rails test
 
+## Design
+
+The visual system (flag palette, request/response motif, type, modal
+behavior) and the reasoning behind it are documented in
+[`docs/DESIGN.md`](docs/DESIGN.md).
+
 ## Edit content
 
 Change `data/portfolio.yml` and push — the page is fully data-driven.
-The CV served at `/resume.pdf` lives in `public/resume.pdf`.
+The CV links point to a Google Drive file (`profile.resume_path` in the YAML),
+so the PDF can be updated without redeploying.
 
 ## Deploy
 

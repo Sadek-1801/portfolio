@@ -8,8 +8,8 @@ class PortfolioContentTest < ActiveSupport::TestCase
     end
   end
 
-  test "has non-empty experience, projects, skills, education" do
-    %i[experience projects skills education].each do |key|
+  test "has non-empty experience, projects, skills" do
+    %i[experience projects skills].each do |key|
       assert PortfolioContent.data[key].is_a?(Array), "#{key} not an array"
       assert PortfolioContent.data[key].any?, "#{key} empty"
     end
