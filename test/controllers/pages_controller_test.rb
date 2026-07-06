@@ -8,6 +8,6 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     %w[about projects experience skills contact].each do |section|
       assert_select "section##{section}, footer##{section}", true, "missing ##{section}"
     end
-    assert_select "a[href=?]", "/resume.pdf"
+    assert_select "a[href=?]", "resume.pdf"
   end
 end
