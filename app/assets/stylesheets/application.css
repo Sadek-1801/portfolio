@@ -223,6 +223,9 @@ a:focus-visible, .btn:focus-visible {
   width: 10px; height: 10px; border-radius: 50%;
   background: var(--red);
 }
+/* a timeline needs two points: with a single role, drop the rail and marker */
+.job:only-of-type { border-left: none; padding-left: 0; }
+.job:only-of-type::before { display: none; }
 .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
 .job h3 { font-size: 1.12rem; font-weight: 700; }
 .job-period { color: var(--muted); font-size: 0.8rem; }
