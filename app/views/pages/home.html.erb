@@ -35,6 +35,31 @@
   </div>
 </section>
 
+<section id="skills" class="section">
+  <div class="wrap">
+    <p class="request-line" aria-hidden="true">
+      <span class="route">GET /skills</span>
+      <span class="status"><span class="status-code">200 OK</span> · <%= @portfolio[:skills].sum { |g| g[:items].size } %> items</span>
+    </p>
+    <h2>Skills</h2>
+    <div class="skill-grid">
+      <% @portfolio[:skills].each do |group| %>
+        <div class="skill-group">
+          <h3 class="tree-dir" aria-label="<%= group[:group] %>"><%= group[:group].parameterize %>/</h3>
+          <ul class="skill-tree">
+            <% group[:items].each_with_index do |item, i| %>
+              <li>
+                <span class="tree-branch" aria-hidden="true"><%= i == group[:items].size - 1 ? "└──" : "├──" %></span>
+                <%= item %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
 <section id="projects" class="section">
   <div class="wrap">
     <p class="request-line" aria-hidden="true">
@@ -86,31 +111,6 @@
         </ul>
       </article>
     <% end %>
-  </div>
-</section>
-
-<section id="skills" class="section">
-  <div class="wrap">
-    <p class="request-line" aria-hidden="true">
-      <span class="route">GET /skills</span>
-      <span class="status"><span class="status-code">200 OK</span> · <%= @portfolio[:skills].sum { |g| g[:items].size } %> items</span>
-    </p>
-    <h2>Skills</h2>
-    <div class="skill-grid">
-      <% @portfolio[:skills].each do |group| %>
-        <div class="skill-group">
-          <h3 class="tree-dir" aria-label="<%= group[:group] %>"><%= group[:group].parameterize %>/</h3>
-          <ul class="skill-tree">
-            <% group[:items].each_with_index do |item, i| %>
-              <li>
-                <span class="tree-branch" aria-hidden="true"><%= i == group[:items].size - 1 ? "└──" : "├──" %></span>
-                <%= item %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-    </div>
   </div>
 </section>
 
